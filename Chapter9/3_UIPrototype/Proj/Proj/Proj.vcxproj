@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5AAC462C-6DD4-45A6-8D41-83F160B79B4F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Proj</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>main</TargetName>
+    <OutDir>F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>main</TargetName>
+    <OutDir>F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\game;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\include\vorbis;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\fs;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\include;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\threading;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\sound;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\LGL;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\GL;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\core;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\game;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\include\vorbis;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\fs;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\include;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\threading;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\sound;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\LGL;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\GL;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src\core;F:\Book_AndroidNDK\Layout\Chapter9_Snippets\1_Game\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\main.cpp" />
+    <ClCompile Include="..\..\src\Bitmap.cpp" />
+    <ClCompile Include="..\..\src\Canvas.cpp" />
+    <ClCompile Include="..\..\src\core\iIntrusivePtr.cpp" />
+    <ClCompile Include="..\..\src\core\VecMath.cpp" />
+    <ClCompile Include="..\..\src\Engine.cpp" />
+    <ClCompile Include="..\..\src\FI_Utils.cpp" />
+    <ClCompile Include="..\..\src\fs\Archive.cpp" />
+    <ClCompile Include="..\..\src\fs\FileSystem.cpp" />
+    <ClCompile Include="..\..\src\fs\libcompress.c" />
+    <ClCompile Include="..\..\src\ft_load.cpp" />
+    <ClCompile Include="..\..\src\game\Globals.cpp" />
+    <ClCompile Include="..\..\src\game\Pentamino.cpp" />
+    <ClCompile Include="..\..\src\Geometry.cpp" />
+    <ClCompile Include="..\..\src\Gestures.cpp" />
+    <ClCompile Include="..\..\src\GLClasses.cpp" />
+    <ClCompile Include="..\..\src\LGL\LGL.cpp" />
+    <ClCompile Include="..\..\src\Multitouch.cpp" />
+    <ClCompile Include="..\..\src\sound\Audio.cpp" />
+    <ClCompile Include="..\..\src\sound\Decoders.cpp" />
+    <ClCompile Include="..\..\src\sound\LAL.cpp" />
+    <ClCompile Include="..\..\src\TextRenderer.cpp" />
+    <ClCompile Include="..\..\src\threading\Event.cpp" />
+    <ClCompile Include="..\..\src\threading\Thread.cpp" />
+    <ClCompile Include="..\..\src\threading\tinythread.cpp" />
+    <ClCompile Include="..\..\src\threading\WorkerThread.cpp" />
+    <ClCompile Include="..\..\src\Wrapper_Windows.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Bitmap.h" />
+    <ClInclude Include="..\..\src\Canvas.h" />
+    <ClInclude Include="..\..\src\core\iIntrusivePtr.h" />
+    <ClInclude Include="..\..\src\core\iObject.h" />
+    <ClInclude Include="..\..\src\core\RingBuffer.h" />
+    <ClInclude Include="..\..\src\core\VecMath.h" />
+    <ClInclude Include="..\..\src\Engine.h" />
+    <ClInclude Include="..\..\src\FI_SaveLoadFlags.h" />
+    <ClInclude Include="..\..\src\FI_Utils.h" />
+    <ClInclude Include="..\..\src\fs\Archive.h" />
+    <ClInclude Include="..\..\src\fs\Blob.h" />
+    <ClInclude Include="..\..\src\fs\Files.h" />
+    <ClInclude Include="..\..\src\fs\FileSystem.h" />
+    <ClInclude Include="..\..\src\fs\libcompress.h" />
+    <ClInclude Include="..\..\src\fs\MountPoint.h" />
+    <ClInclude Include="..\..\src\fs\Streams.h" />
+    <ClInclude Include="..\..\src\ft.h" />
+    <ClInclude Include="..\..\src\ft_load.h" />
+    <ClInclude Include="..\..\src\game\Field.h" />
+    <ClInclude Include="..\..\src\game\Globals.h" />
+    <ClInclude Include="..\..\src\game\Pentamino.h" />
+    <ClInclude Include="..\..\src\game\Shape.h" />
+    <ClInclude Include="..\..\src\Geometry.h" />
+    <ClInclude Include="..\..\src\Gestures.h" />
+    <ClInclude Include="..\..\src\GLClasses.h" />
+    <ClInclude Include="..\..\src\LGL\LGL.h" />
+    <ClInclude Include="..\..\src\LGL\LGLAPI.h" />
+    <ClInclude Include="..\..\src\LGL\Platform.h" />
+    <ClInclude Include="..\..\src\Multitouch.h" />
+    <ClInclude Include="..\..\src\sound\Audio.h" />
+    <ClInclude Include="..\..\src\sound\Decoders.h" />
+    <ClInclude Include="..\..\src\sound\DecodingProvider.h" />
+    <ClInclude Include="..\..\src\sound\LAL.h" />
+    <ClInclude Include="..\..\src\sound\MOD.h" />
+    <ClInclude Include="..\..\src\sound\OGG.h" />
+    <ClInclude Include="..\..\src\TextRenderer.h" />
+    <ClInclude Include="..\..\src\threading\Event.h" />
+    <ClInclude Include="..\..\src\threading\Mutex.h" />
+    <ClInclude Include="..\..\src\threading\Thread.h" />
+    <ClInclude Include="..\..\src\threading\tinythread.h" />
+    <ClInclude Include="..\..\src\threading\WorkerThread.h" />
+    <ClInclude Include="..\..\src\Wrapper_Android.h" />
+    <ClInclude Include="..\..\src\Wrapper_Callbacks.h" />
+    <ClInclude Include="..\..\src\Wrapper_Windows.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
