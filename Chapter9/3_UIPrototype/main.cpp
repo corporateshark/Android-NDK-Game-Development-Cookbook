@@ -171,7 +171,7 @@ void OnStart( const std::string& RootPath )
 	clPtr<clGUIPage> Page_Game     = new clPage_Game;
 	clPtr<clGUIPage> Page_About    = new clPage_About;
 
-//	Page_MainMenu->FFallbackPage
+	Page_MainMenu->FFallbackPage = NULL;
 	Page_Game->FFallbackPage = Page_MainMenu;
 	Page_About->FFallbackPage = Page_MainMenu;
 
@@ -213,7 +213,6 @@ void OnKey( int Key, bool KeyState )
 
 	if ( !KeyState )
 	{
-//		ProcessClick( false );
 		return;
 	}
 }

@@ -255,11 +255,6 @@ void clHTTPRequestThread::HandleRequest( sHTTPServerRequest* r )
 	}
 	else
 	{
-		/// Check for shared files
-//		( void** )&r->FData // read data here
-//		r->FDataLen = ( int )Len;
-//		r->FBinaryAnswer = true;
-
 		/// Were we able to find the file ?
 		if ( !r->FBinaryAnswer )
 		{
@@ -460,7 +455,6 @@ void clHTTPRequestThread::Run()
 
 void clHTTPServerThread::Run()
 {
-//	printf( "Starting HTTP server at %s:%d, MaxConn = %d", FBindAddress.c_str(), FPort, FMaxConnections );
 	LTCPSocket* in = new LTCPSocket();
 
 	if ( !in->Open() )

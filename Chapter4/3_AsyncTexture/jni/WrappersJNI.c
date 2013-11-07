@@ -6,15 +6,10 @@ JNIEnv* GetEnv();
 /// global pointer to Java VM (also shared with OpenAL implementation)
 JavaVM* javaVM = NULL;
 
-jclass Class_JNILib;
-
 jint JNI_OnLoad( JavaVM* vm, void* reserved )
 {
 	javaVM = vm;
 	JNIEnv* env = GetEnv();
-
-	Class_JNILib = ( *env )->FindClass( env, "com/linderdaum/engine/LinderdaumJNILib" );
-	Class_JNILib = ( *env )->NewGlobalRef( env, Class_JNILib );
 
 	return JNI_VERSION_1_2;
 }

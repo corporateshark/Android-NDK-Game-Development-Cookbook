@@ -11,8 +11,6 @@ typedef int SOCKET_T;
 # include <winsock2.h>
 # define WIN32_LEAN_AND_MEAN
 # include <windows.h>
-//# undef min
-//# undef max
 #endif
 
 #include <assert.h>
@@ -287,9 +285,6 @@ void InitializeNetwork()
 {
 #ifdef _WIN32
 	Static_NetworkInitialized = ( Static_NetworkInitialized < 0 ) ? 1 : Static_NetworkInitialized + 1;
-
-	// initialize WinSock
-//	Static_WinsockStartData = reinterpret_cast<void*>( new WSADATA() );
 
 	// request version 2.0 - we need a workaround for async sockets in Win2000
 	if ( WSAStartup( MAKEWORD( 2, 0 ), &Static_WinsockStartData ) != 0 )

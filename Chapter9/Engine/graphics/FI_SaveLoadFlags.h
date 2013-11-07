@@ -2,8 +2,7 @@
 
 #if defined( OS_ANDROID ) || defined( OS_MACOSX )
 // Android uses statically linked FreeImage
-#define FREEIMAGE_LIB
-//	#include "ExtLibs/FreeImage.h"
+#	define FREEIMAGE_LIB
 #endif
 
 //#else // OS_ANDROID

@@ -18,13 +18,10 @@ inline void set_pixel( unsigned char* fb, int w, int h, int x, int y, int color 
 {
 	if ( x < 0 || y < 0 || x > w - 1 || y > h - 1 ) { return; }
 
-//	fb[((h - 1 - y) * w + x) * 3 + 0] = ( color       ) & 0xFF;
-//	fb[((h - 1 - y) * w + x) * 3 + 1] = ( color >> 8  ) & 0xFF;
-//	fb[((h - 1 - y) * w + x) * 3 + 2] = ( color >> 16 ) & 0xFF;
 	fb[( ( h - 1 - y ) * w + x ) * 4 + 0] = ( color       ) & 0xFF;
 	fb[( ( h - 1 - y ) * w + x ) * 4 + 1] = ( color >> 8  ) & 0xFF;
 	fb[( ( h - 1 - y ) * w + x ) * 4 + 2] = ( color >> 16 ) & 0xFF;
-	fb[( ( h - 1 - y ) * w + x ) * 4 + 3] = 0; // ( color >> 16 ) & 0xFF;
+	fb[( ( h - 1 - y ) * w + x ) * 4 + 3] = 0;
 }
 
 inline void swap_int( int& v1, int& v2 ) { int t = v1; v1 = v2; v2 = t; }

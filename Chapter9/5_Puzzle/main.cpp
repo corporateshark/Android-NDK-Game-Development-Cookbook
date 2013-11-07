@@ -86,10 +86,6 @@ void DrawTile( clPuzzle* g, int i, int j, const vec4& Color )
 	const LRect* ClipRect = Tile->GetRect();
 
 	g_Canvas->TexturedRect2DClipped( TilePosition.x, TilePosition.y, TilePosition.z, TilePosition.w, LVector4( 1 ), g_Texture, ClipRect->ToVector4() );
-
-//void clCanvas::TexturedRect2DTiled( float X1, float Y1, float X2, float Y2, int TilesX, int TilesY, const LVector4& Color, const clPtr<clGLTexture>& Texture )
-//	Canvas->TexturedRectTiled( TilePosition.x, TilePosition.y, TilePosition.z, TilePosition.w, 1.0f, 1.0f, g_Texture,
-//		Color, &Tile->FRect );
 }
 
 vec4 UIntToColor( int a )
@@ -258,8 +254,6 @@ void OnStart( const std::string& RootPath )
 
 	g_Canvas = new clCanvas();
 
-//	Texture = LoadTexture( "NoImageAvailable.png" );
-
 	g_Texture = LoadTexture( "NoImageAvailable.png" );
 
 	g_Flow = new clFlowUI( new clMyFlowFlinger(), 15 );
@@ -294,7 +288,6 @@ void OnStart( const std::string& RootPath )
 
 void OnDrawFrame()
 {
-//	RenderDirect(g_Flow);
 	g_GUI->Render();
 }
 
@@ -312,7 +305,6 @@ void OnKey( int code, bool pressed )
 
 	if ( !pressed )
 	{
-//		ProcessClick( false );
 		return;
 	}
 }

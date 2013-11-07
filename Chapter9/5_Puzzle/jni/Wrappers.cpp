@@ -88,7 +88,6 @@ extern "C"
 
 		LMutex Lock( &g_MotionEventsQueueMutex );
 		g_MotionEventsQueue.push_back( M );
-//		GestureHandler_SendMotion( PointerID, (eMotionFlag)Flag, Pos, Pressed );
 	}
 
 	JNIEXPORT void JNICALL Java_com_packtpub_ndkcookbook_game1_Game1Activity_SetSurface( JNIEnv* env, jclass clazz, jobject javaSurface )

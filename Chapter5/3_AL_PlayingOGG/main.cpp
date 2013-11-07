@@ -45,7 +45,7 @@ class SoundThread: public iThread
 		clPtr<AudioSource> Src = new AudioSource();
 
 		Src->BindWaveform( new OggProvider( LoadFileAsBlob( "test.ogg" ) ) );
-//		Src->BindWaveform(new ModPlugProvider( LoadFileAsBlob("test.it") ));
+		// TODO: try Src->BindWaveform( new ModPlugProvider( LoadFileAsBlob( "test.it" ) ) );
 		Src->Play();
 
 		FPendingExit = false;

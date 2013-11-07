@@ -67,7 +67,6 @@ void MakeSuspensionBridge( World* W, Body* Ground, int NumPlanks /* 15 */, float
 	for ( int i = 0 ; i < NumPlanks - 1; ++i )
 	{
 		Joint* J = CreateJoint( Planks[i + 0], Planks[i + 1], Vec2( -9.125f + 1.25f * ( i + 1 ), 5.0f ), softness, biasFactor );
-//		J->FColor = LC_Blue + vec4((float)i / (float)(NumPlanks - 1), 0.0f, 0.0f, 0.0f);
 		W->Add( J );
 	}
 

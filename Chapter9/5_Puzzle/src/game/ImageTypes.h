@@ -48,7 +48,6 @@ public:
 
 	sImageDescriptor():
 		FState( L_NOTSTARTED ),
-//		FImage(NULL),
 		FSize( L_PHOTO_SIZE_128 )
 	{
 		FTexture = new clGLTexture();

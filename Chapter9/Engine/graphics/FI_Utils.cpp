@@ -19,8 +19,8 @@ const char* FreeImageDLL = "freeimage64.dll";
 
 HMODULE Lib = NULL;
 #else
-// Android uses statically linked FreeImage. LV: But this doesn't mean we use some of its headers directly
-//	#include "ExtLibs/FreeImage.h"
+	// Android uses statically linked FreeImage.
+	// LV: But this doesn't mean we use some of its headers directly
 extern "C"
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise( bool load_local_plugins_only );

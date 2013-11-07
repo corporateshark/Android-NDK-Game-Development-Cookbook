@@ -3589,14 +3589,11 @@ BOOL CSoundFile::SaveXM( LPCSTR lpszFileName, UINT nPacking )
 
 						xmsh.snum[j] = k;
 					}
-
-//				xmsh.reserved2 = xmih.samples;
 			}
 		}
 		else
 		{
 			xmih.samples = 1;
-//			xmsh.reserved2 = 1;
 			smptable[0] = i;
 		}
 

@@ -67,8 +67,6 @@ Luint clGLSLShaderProgram::AttachShaderID( Luint Target, const std::string& Shad
 
 	LGL3->glShaderSource( Shader, 1, &Code, NULL );
 
-//	LOGI( "Compiling shader for stage: %X\n", Target );
-
 	LGL3->glCompileShader( Shader );
 
 	if ( !CheckStatus( Shader, GL_COMPILE_STATUS, "Shader wasn''t compiled:" ) )
@@ -190,8 +188,6 @@ void clGLSLShaderProgram::RebindAllUniforms()
 		LGL3->glGetActiveUniform( FProgramID, i, sizeof( Buff ), &Length, &Size, &Type, Buff );
 
 		std::string Name( Buff, Length );
-
-//		LOGI( "Active uniform: %s at location: %i\n", Name.c_str(), LGL3->glGetUniformLocation( FProgramID, Name.c_str() ) );
 
 		sUniform Uniform( Name );
 
@@ -359,11 +355,6 @@ void clGLTexture::LoadFromBitmap( const clPtr<clBitmap>& Bitmap )
 
 void clGLTexture::CommitChanges()
 {
-//	if ( !GetImage() ) { return; }
-
-//	clPtr<clBitmap> Bitmap = GetImage()->GetCurrentBitmap();
-
-//	LoadFromBitmap( Bitmap );
 }
 
 clGLVertexArray::clGLVertexArray()

@@ -619,28 +619,11 @@ namespace Box2D
 				{
 					if ( TimingFunction ) { EraseStart = TimingFunction(); }
 
-					/*
-					#ifndef __GNUC__
-					            std::map<Box2D::ArbiterKey, Box2D::Arbiter>::const_iterator ii = arbiters.find(key);
-
-					            if(arbiters.cend() != ii)
-					            {
-					               arbiters.erase(ii);
-					#else
-					*/
 					if ( arbiters.erase( key ) > 0 )
 
-//#endif
-//					{
-						// contact ended
-						if ( EndCollisionCallback ) { EndCollisionCallback( CollisionUserData, &newArb ); }
+					// contact ended
+					if ( EndCollisionCallback ) { EndCollisionCallback( CollisionUserData, &newArb ); }
 
-//					}
-					/*
-					#ifndef __GNUC__
-					            }
-					#endif
-					*/
 					if ( TimingFunction ) { EraseStart = TimingFunction() - EraseStart; EraseArbiterTime += EraseStart; }
 				}
 			}
