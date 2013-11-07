@@ -9,11 +9,11 @@
 #include "LGL.h"
 
 #ifndef LGL_CALL
-#	if defined( ANDROID )
-#		define LGL_CALL __NDK_FPABI__
-#	else
-#		define LGL_CALL
-#	endif // OS_ANDROID
+#  if defined( ANDROID )
+#     define LGL_CALL __NDK_FPABI__
+#  else
+#     define LGL_CALL
+#  endif // OS_ANDROID
 #endif // LGL_CALL
 
 #if defined( ANDROID )

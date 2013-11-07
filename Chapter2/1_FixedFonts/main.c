@@ -26,11 +26,11 @@ void render_char( unsigned char* buf24, char c, int x, int y, int color )
 		{
 			int m_color = get_pixel( font, fw, fh, x1, y1 );
 
-			float c = (float)(m_color & 0xFF) / 255.0f;
+			float c = ( float )( m_color & 0xFF ) / 255.0f;
 
 			if ( m_color != 0 )
 			{
-				put_pixel( buf24, w, h, x + x1 - u, y + y1 - v, (int)(c*color) );
+				put_pixel( buf24, w, h, x + x1 - u, y + y1 - v, ( int )( c * color ) );
 			}
 		}
 	}

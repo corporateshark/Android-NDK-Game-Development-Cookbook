@@ -618,10 +618,11 @@ namespace Box2D
 				else
 				{
 					if ( TimingFunction ) { EraseStart = TimingFunction(); }
+
 					if ( arbiters.erase( key ) > 0 )
 
-					// contact ended
-					if ( EndCollisionCallback ) { EndCollisionCallback( CollisionUserData, &newArb ); }
+						// contact ended
+						if ( EndCollisionCallback ) { EndCollisionCallback( CollisionUserData, &newArb ); }
 
 					if ( TimingFunction ) { EraseStart = TimingFunction() - EraseStart; EraseArbiterTime += EraseStart; }
 				}

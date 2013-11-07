@@ -33,7 +33,7 @@ public:
 	}
 
 	inline void GenFigure( int figIdx, int Col )
-	{
+{
 		for ( int i = 0; i != NUM_COLORS; i++ ) { FColor[i] = Linderdaum::Math::Random( NUM_COLORS ); }
 
 		FFigureIndex = figIdx;

@@ -15,7 +15,8 @@ void Puzzle::Retoss( int W, int H )
 
 	// toss the image
 	int TotalTiles = FColumns * FRows;
-	for( int idx1 = TotalTiles - 1 ; idx1 > 0 ; idx1--)
+
+	for ( int idx1 = TotalTiles - 1 ; idx1 > 0 ; idx1-- )
 	{
 		int idx2 = Linderdaum::Math::RandomInRange( 0, idx1 );
 
@@ -26,16 +27,17 @@ void Puzzle::Retoss( int W, int H )
 
 		SwapTiles( Tile1i, Tile1j, Tile2i, Tile2j );
 	}
-/*
-	// toss image
-	for ( int i = 0; i != FColumns; i++ )
-		for ( int j = 0; j != FRows; j++ )
-		{
-			int NewI = Linderdaum::Math::RandomInRange( i, FColumns - 1 );
-			int NewJ = Linderdaum::Math::RandomInRange( j, FRows - 1    );
-			SwapTiles( i, j, NewI, NewJ );
-		}
-*/
+
+	/*
+	   // toss image
+	   for ( int i = 0; i != FColumns; i++ )
+	      for ( int j = 0; j != FRows; j++ )
+	      {
+	         int NewI = Linderdaum::Math::RandomInRange( i, FColumns - 1 );
+	         int NewJ = Linderdaum::Math::RandomInRange( j, FRows - 1    );
+	         SwapTiles( i, j, NewI, NewJ );
+	      }
+	*/
 	FClickedI = FClickedJ = -1;
 }
 

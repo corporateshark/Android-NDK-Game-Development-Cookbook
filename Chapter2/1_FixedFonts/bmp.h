@@ -103,13 +103,14 @@ void clear_img( unsigned char* FB, int W, int H )
 	memset( FB, 0, W * H * 3 );
 }
 
-void put_pixel( unsigned char* FB, int W, int H, int x, int y, int Color)
+void put_pixel( unsigned char* FB, int W, int H, int x, int y, int Color )
 {
-   if(y < 0 || x < 0 || y > H - 1 || x > W - 1) { return; }
-   int ofs = y * W + x;
-   FB[ofs * 3 + 0] = Color & 0xFF;
-   FB[ofs * 3 + 1] = (Color >> 8) & 0xFF;
-   FB[ofs * 3 + 2] = (Color >> 16) & 0xFF;
+	if ( y < 0 || x < 0 || y > H - 1 || x > W - 1 ) { return; }
+
+	int ofs = y * W + x;
+	FB[ofs * 3 + 0] = Color & 0xFF;
+	FB[ofs * 3 + 1] = ( Color >> 8 ) & 0xFF;
+	FB[ofs * 3 + 2] = ( Color >> 16 ) & 0xFF;
 }
 
 int get_pixel( unsigned char* buffer, int width, int height, int x, int y )
