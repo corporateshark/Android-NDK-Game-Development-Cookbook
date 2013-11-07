@@ -1,0 +1,3 @@
+we add the IsStreaming() function to iWaveDataProvider
+
+Then we add the FBufferCount,
