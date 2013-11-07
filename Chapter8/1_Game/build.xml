@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Game1" default="help">
+
+    <property file="ant.properties" />
+
+    <loadproperties srcFile="project.properties" />
+
+    <target name="copy-common-media">
+        <copy file="default.ttf" tofile="assets/default.ttf"/>
+        <copy file="test.xm" tofile="assets/test.xm"/>
+        <copy file="back.png" tofile="assets/back.png"/>
+        <copy file="back_high_bottom.png" tofile="assets/back_high_bottom.png"/>
+        <copy file="back_high_top.png" tofile="assets/back_high_top.png"/>
+        <copy file="back.sp" tofile="assets/back.sp"/>
+        <copy file="blockmask0.png" tofile="assets/blockmask0.png"/>
+        <copy file="blockmask1.png" tofile="assets/blockmask1.png"/>
+        <copy file="blockmask2.png" tofile="assets/blockmask2.png"/>
+        <copy file="blockmask3.png" tofile="assets/blockmask3.png"/>
+        <copy file="messageframecenter.png" tofile="assets/messageframecenter.png"/>
+        <copy file="messageframeleft.png" tofile="assets/messageframeleft.png"/>
+        <copy file="messageframeright.png" tofile="assets/messageframeright.png"/>
+    </target>
+
+    <!-- quick check on sdk.dir -->
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var"
+            unless="sdk.dir"
+    />
+
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+
+</project>
