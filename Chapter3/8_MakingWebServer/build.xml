@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="App5" default="help">
+
+    <property file="ant.properties" />
+
+    <loadproperties srcFile="project.properties" />
+
+    <target name="copy-common-media">
+    </target>
+
+    <!-- quick check on sdk.dir -->
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var"
+            unless="sdk.dir"
+    />
+
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+
+</project>
