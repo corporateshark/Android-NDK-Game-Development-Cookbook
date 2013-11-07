@@ -1,0 +1,221 @@
+/**
+ * \file Gestures.cpp
+ * \brief Gestures handling helpers implementation
+ * \version 0.6.01
+ * \date 21/07/2011
+ * \author Sergey Kosarevsky, 2011
+ * \author support@linderdaum.com http://www.linderdaum.com
+ */
+
+#include "iObject.h"
+#include "Gestures.h"
+#include "Wrapper_Callbacks.h"
+
+#include <algorithm>
+
+#if defined( ANDROID )
+#  include "Wrapper_Android.h"
+#else
+#  include "Wrapper_Windows.h"
+#endif
+
+iGestureResponder* g_Responder = NULL;
+
+void    UpdateGesture();
+
+sMotionData                  FMotionData;
+RingBuffer<sMotionData> FPrevMotionData( 5 );
+
+bool        FMotionDataValid = false;
+bool        FMoving = false;
+sTouchPoint FInitialPoint( 0, LVector2(), L_MOTION_MOVE, 0.0 );
+/// get the position of the current touch point in the current gesture, that means the current position of the last point touched
+sTouchPoint FCurrentPoint( 0, LVector2(), L_MOTION_MOVE, 0.0 );
+
+#pragma region Fling
+/// pointer movements below this value are ignored
+float FlingThresholdSensitivity = 0.1f;
+
+/// pointer movements below this value will not generate a fling
+float FlingStartSensitivity = 0.2f;
+bool FFlingWasValid = false;
+#pragma endregion
+
+#pragma region Pinch-zoom
+bool     FPinchZoomValid = false;
+bool     FPinchZoomWasValid = false;
+float    FZoomFactor = 1.0f;
+float    FInitialDistance = 1.0f;
+sTouchPoint FInitialPoint1;
+sTouchPoint FInitialPoint2;
+sTouchPoint FCurrentPoint1;
+sTouchPoint FCurrentPoint2;
+LVector2 FInitialCenter;
+LVector2 FCurrentCenter;
+#pragma endregion
+
+static bool IsGestureValid()
+{
+	return FMotionDataValid;
+}
+
+static LVector2 GetPositionDelta()
+{
+	return FCurrentPoint.FPoint - FInitialPoint.FPoint;
+}
+
+static bool IsDraggingValid()
+{
+	// single-point dragging
+	if ( IsGestureValid() && FMotionData.GetNumTouchPoints() == 1 && FMotionData.GetTouchPointID( 0 ) == 0 )
+	{
+		if ( FMoving )
+		{
+			FCurrentPoint = FMotionData.GetTouchPoint( 0 );
+		}
+		else
+		{
+			FMoving       = true;
+			FInitialPoint = FMotionData.GetTouchPoint( 0 );
+			// to prevent glitch, since no current point is set
+			return false;
+		}
+	}
+	else
+	{
+		FMoving = false;
+	}
+
+	return FMoving;
+}
+
+static bool IsPinchZoomValid()
+{
+	if ( IsGestureValid() && FMotionData.GetNumTouchPoints() == 2 )
+	{
+		const sTouchPoint& Pt1 = ( FMotionData.GetTouchPoint( 0 ) );
+		const sTouchPoint& Pt2 = ( FMotionData.GetTouchPoint( 1 ) );
+		const LVector2& Pos1( FMotionData.GetTouchPointPos( 0 ) );
+		const LVector2& Pos2( FMotionData.GetTouchPointPos( 1 ) );
+
+		float NewDistance = ( Pos1 - Pos2 ).Length();
+
+		if ( FPinchZoomValid )
+		{
+			// do pinch zoom
+			FZoomFactor    = NewDistance / FInitialDistance;
+			FCurrentPoint1 = Pt1;
+			FCurrentPoint2 = Pt2;
+			FCurrentCenter = ( Pos1 + Pos2 ) * 0.5f;
+		}
+		else
+		{
+			// start new pinch zoom
+			FInitialDistance = NewDistance;
+			FPinchZoomValid  = true;
+			FZoomFactor      = 1.0f;
+			FInitialPoint1   = Pt1;
+			FInitialPoint2   = Pt2;
+			FInitialCenter = ( Pos1 + Pos2 ) * 0.5f;
+			// to prevent glitch, since no current point is set
+			return false;
+		}
+	}
+	else
+	{
+		// stop pinch zoom
+		FPinchZoomValid = false;
+		FZoomFactor     = 1.0f;
+	}
+
+	return FPinchZoomValid;
+}
+
+void UpdateGesture()
+{
+	const sTouchPoint& Pt1 = FInitialPoint;
+	const sTouchPoint& Pt2 = FCurrentPoint;
+
+	sMotionData* Prev0 = FPrevMotionData.prev( 0 );
+	sMotionData* Prev1 = FPrevMotionData.prev( 1 );
+	sMotionData* Prev2 = FPrevMotionData.prev( 2 );
+
+	g_Responder->Event_UpdateGesture( FMotionData );
+
+	// check double tap
+	if ( Prev0 && Prev1 && Prev2 )
+	{
+		size_t NumPts0 = Prev0->GetNumTouchPoints();
+		size_t NumPts1 = Prev1->GetNumTouchPoints();
+		size_t NumPts2 = Prev2->GetNumTouchPoints();
+
+		if ( NumPts2 == 0 && NumPts1 == 1 && NumPts0 == 0 && FMotionData.GetNumTouchPoints() == 1 )
+		{
+			float TimeSpan = float( FMotionData.GetTouchPoint( 0 ).FTimeStamp - Prev1->GetTouchPoint( 0 ).FTimeStamp );
+			float Offset = ( FMotionData.GetTouchPointPos( 0 ) - Prev1->GetTouchPointPos( 0 ) ).Length();
+
+			// it looks like a double tap
+			if ( Offset <= DefaultDoubleTapOffset )
+			{
+				FPrevMotionData.clear();
+
+				if ( g_Responder->GetDoubleTapTimeout() > TimeSpan )
+				{
+					g_Responder->Event_DoubleTap( FMotionData.GetTouchPoint( 0 ).FPoint );
+				}
+			}
+		}
+	}
+
+	if ( IsDraggingValid() )
+	{
+		// react on single point dragging
+		if ( GetPositionDelta().Length() > FlingThresholdSensitivity )
+		{
+			g_Responder->Event_Drag( Pt1, Pt2 );
+			FFlingWasValid = true;
+		}
+	}
+	else
+	{
+		// finish gesture
+		if ( FFlingWasValid )
+		{
+			if ( GetPositionDelta().Length() > FlingStartSensitivity )
+			{
+				// will be only 1 event
+				g_Responder->Event_Fling( Pt1, Pt2 );
+			}
+			else
+			{
+				g_Responder->Event_Drag( Pt1, Pt2 );
+			}
+
+			FFlingWasValid = false;
+		}
+	}
+
+	if ( IsPinchZoomValid() )
+	{
+		if ( FPinchZoomWasValid )
+		{
+			g_Responder->Event_Pinch( FInitialPoint1, FInitialPoint2, FCurrentPoint1, FCurrentPoint2 );
+		}
+		else
+		{
+			g_Responder->Event_PinchStart( FInitialPoint1, FInitialPoint2 );
+		}
+
+		FPinchZoomWasValid = true;
+	}
+	else if ( FPinchZoomWasValid )
+	{
+		FPinchZoomWasValid = false;
+		g_Responder->Event_PinchStop( FInitialPoint1, FInitialPoint2, FCurrentPoint1, FCurrentPoint2 );
+	}
+}
+
+const sMotionData& GestureHandler_GetMotionData()
+{
+	return FMotionData;
+}

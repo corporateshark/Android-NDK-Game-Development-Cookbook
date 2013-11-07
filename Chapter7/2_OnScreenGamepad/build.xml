@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="App13" default="help">
+
+    <property file="ant.properties" />
+
+    <loadproperties srcFile="project.properties" />
+
+    <target name="copy-common-media">
+        <copy file="pad24.png" todir="assets" overwrite="true"/>
+        <copy file="pad_mask.png" todir="assets" overwrite="true"/>
+    </target>
+
+    <!-- quick check on sdk.dir -->
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var"
+            unless="sdk.dir"
+    />
+
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+
+</project>

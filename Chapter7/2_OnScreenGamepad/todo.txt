@@ -1,0 +1,5 @@
+1. loading alpha-channel files with freetype or from .bmp
+
+2. overlaying it on top of the gaming level
+
+3. handling button presses and axis movements
