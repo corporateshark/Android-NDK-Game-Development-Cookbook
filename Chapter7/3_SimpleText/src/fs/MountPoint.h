@@ -35,7 +35,6 @@
 #ifndef __MountPoints__h__included__
 #define __MountPoints__h__included__
 
-#include "Engine.h"
 #include "Files.h"
 #include "Archive.h"
 #include <sys/stat.h>
@@ -54,6 +53,13 @@ inline std::string Arch_FixFileName( const std::string& VName )
 	std::replace( s.begin(), s.end(), '\\', PATH_SEPARATOR );
 	std::replace( s.begin(), s.end(), '/', PATH_SEPARATOR );
 	return s;
+}
+
+inline void Str_AddTrailingChar( std::string* Str, char Ch )
+{
+	if ( ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch ) ) { return; }
+
+	Str->push_back( Ch );
 }
 
 /// Mount point interface for virtual file system

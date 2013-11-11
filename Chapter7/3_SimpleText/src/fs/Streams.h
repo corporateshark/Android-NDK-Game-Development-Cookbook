@@ -57,6 +57,8 @@ public:
 	virtual const ubyte*  MapStream() const = 0;
 	/// Return pointer to the shared memory corresponding to the current position in this file
 	virtual const ubyte*  MapStreamFromCurrentPos() const = 0;
+
+	virtual std::string ReadLine() = 0;
 };
 
 /// Output stream

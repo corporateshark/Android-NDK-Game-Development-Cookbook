@@ -40,7 +40,6 @@
 #include <string.h>
 
 #include "iObject.h"
-#include "iIntrusivePtr.h"
 
 #undef min
 #undef max

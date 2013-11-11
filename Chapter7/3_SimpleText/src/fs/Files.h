@@ -254,6 +254,35 @@ public:
 
 	virtual const ubyte* MapStream()   const { return FFile->GetFileData(); }
 	virtual const ubyte* MapStreamFromCurrentPos() const { return ( FFile->GetFileData() + FPosition ); }
+
+	virtual std::string ReadLine()
+	{
+		const size_t MAX_LINE_WIDTH = 65535;
+
+		char Buf[ MAX_LINE_WIDTH + 1 ];
+
+		const ubyte* C = MapStreamFromCurrentPos();
+		char* Out      = Buf;
+		char* End      = Buf + MAX_LINE_WIDTH;
+
+		while ( !Eof() && Out < End )
+		{
+			FPosition++;
+
+			char Ch = ( *C++ );
+
+			if ( Ch == 13   ) { continue; }   // kill char
+
+			if ( Ch == 10   ) { break; }
+
+			*Out++ = Ch;
+		}
+
+		( *Out ) = 0;
+
+		return std::string( Buf );
+	}
+
 private:
 	clPtr<iRawFile> FFile;
 	uint64          FPosition;
