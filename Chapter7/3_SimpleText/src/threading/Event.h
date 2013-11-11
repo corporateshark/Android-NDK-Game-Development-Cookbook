@@ -36,7 +36,6 @@
 #define _Event__h_
 
 #include "Mutex.h"
-#include "iIntrusivePtr.h"
 #include "iObject.h"
 #include <vector>
 
