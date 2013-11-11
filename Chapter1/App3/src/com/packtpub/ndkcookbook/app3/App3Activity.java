@@ -11,7 +11,7 @@
  *
  * 2. Redistributions in binary form must display the names 'Sergey Kosarevsky' and
  *    'Viktor Latypov'in the credits of the application, if such credits exist.
- *    The authors of this work must be notified via email (sk@linderdaum.com) in 
+ *    The authors of this work must be notified via email (sk@linderdaum.com) in
  *    this case of redistribution.
  *
  * 3. Neither the name of copyright holders nor the names of its contributors
