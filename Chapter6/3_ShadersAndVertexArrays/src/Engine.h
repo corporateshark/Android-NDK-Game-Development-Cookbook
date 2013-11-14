@@ -53,11 +53,14 @@
 
 inline void Str_AddTrailingChar( std::string* Str, char Ch )
 {
+	// This is actually better to add if condition.  Much cleaner.	
 	if ( ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch ) ) { return; }
 
 	Str->push_back( Ch );
 }
 
+// This is O(N^2) instead of linear run time.  Shame on you:)  And this will not be
+// inlined I believe.
 inline std::string Str_ReplaceAllSubStr( const std::string& Str, const std::string& OldSubStr, const std::string& NewSubStr )
 {
 	std::string Result = Str;
