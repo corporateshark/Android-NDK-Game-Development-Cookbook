@@ -39,10 +39,10 @@
 class WinViewport
 {
 public:
-
 	WinViewport( int W, int H, const char* Title, const char* WndClassName, WNDPROC WndProc, bool Show ) : Width( W ), Height( H )
 	{
 		WNDCLASS wcl;
+		// It's a C style thing. BTW, safer and more recommended if sizeof wcl, instead of type.
 		memset( &wcl, 0, sizeof( WNDCLASS ) );
 		wcl.lpszClassName = WndClassName;
 		wcl.lpfnWndProc = WndProc;
@@ -50,6 +50,11 @@ public:
 
 		RegisterClass( &wcl );
 
+		// Width and Height are of whole window with border, not a client area.
+		// If GetWidth() and GetHeight() used later for viewport dimensions,
+		// it is wrong.  More, window can be resized but doesn't react on the 
+		// change.  Add proper border style (not reiszeable).  Don't hardcode
+		// positions, there are constants to system place it.
 		hWnd = CreateWindowA( WndClassName, Title, WS_OVERLAPPEDWINDOW, 100, 100, W, H, 0, NULL, NULL, NULL );
 		DeviceContext = GetDC( hWnd );
 
@@ -62,6 +67,8 @@ public:
 
 	virtual ~WinViewport()
 	{
+		// Mark copy/move constructor and assignment operators
+		// private and undefined.  They don't work correct.
 		ReleaseDC( hWnd, DeviceContext );
 		DestroyWindow( hWnd );
 	}
