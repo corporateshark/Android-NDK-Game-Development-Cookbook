@@ -52,7 +52,10 @@ public:
 class clGLSLShaderProgram
 {
 public:
+	// Again, disallow copy/assign.
 	clGLSLShaderProgram( const std::string& VShader, const std::string& FShader );
+	// This shouldn't be virtual, you have no virtual function to
+	// override.  Managing through base class pointer is useless.
 	virtual ~clGLSLShaderProgram();
 
 	bool       RelinkShaderProgram();
