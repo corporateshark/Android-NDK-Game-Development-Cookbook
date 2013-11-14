@@ -63,9 +63,10 @@ int main()
 {
 	WinViewport* MainWindow = new WinViewport( 400, 400, "OpenGL3", "MyWindowClass", &MyFunc, true );
 
+	// This isn't deleted, memory leak.
 	LGL3 = new sLGLAPI;
 
-	LGL::clGLExtRetriever* OpenGL;
+	LGL::clGLExtRetriever* OpenGL;  // Why not in one line with the next? Leaked too.
 	OpenGL = new LGL::clGLExtRetriever;
 	OpenGL->Reload( LGL3 );
 
