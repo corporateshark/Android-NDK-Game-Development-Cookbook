@@ -31,7 +31,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+// These should go after LGL.h
 #include <windows.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "LGL.h"
@@ -47,10 +49,6 @@ void OnDrawFrame()
 
 LRESULT CALLBACK MyFunc( HWND h, UINT msg, WPARAM w, LPARAM p )
 {
-	HDC dc;
-	PAINTSTRUCT ps;
-	int x = ( ( int )( short )LOWORD( p ) ), y = ( ( int )( short )HIWORD( p ) );
-
 	switch ( msg )
 	{
 		case WM_DESTROY:
@@ -74,6 +72,7 @@ int main()
 	const int GLVerMajor = 3;
 	const int GLVerMinor = 2;
 
+	// Do we really need `TempWindow` and `TempContext` here? Seems like it's unused.
 	WinViewport* TempWindow = new WinViewport( 0, 0, "TempWindow", "TempWindowClass", &DefWindowProc, false );
 
 	// create dummy context to get pointers to GL extensions functions
@@ -84,7 +83,7 @@ int main()
 
 	// cleanup temp stuff
 	OpenGL->DeleteContext( LGL3, TempWindow->GetDeviceContext(), TempContext );
-	delete( TempWindow );
+	delete TempWindow;
 	OpenGL->MakeCurrent( LGL3, MainWindow->GetDeviceContext(), Context );
 	OpenGL->Reload( LGL3 );
 
@@ -104,7 +103,7 @@ int main()
 		SwapBuffers( MainWindow->GetDeviceContext() );
 	}
 
-	delete( MainWindow );
+	delete MainWindow;
 
 	return msg.wParam;
 }
