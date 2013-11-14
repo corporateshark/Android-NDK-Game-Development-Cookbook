@@ -42,7 +42,8 @@ public:
 	WinViewport( int W, int H, const char* Title, const char* WndClassName, WNDPROC WndProc, bool Show ) : Width( W ), Height( H )
 	{
 		WNDCLASS wcl;
-		// It's a C style thing. BTW, safer and more recommended if sizeof wcl, instead of type.
+		// It's a C style thing. BTW, safer and more recommended if |sizeof wcl|,
+		// instead of sizeof(Type).
 		memset( &wcl, 0, sizeof( WNDCLASS ) );
 		wcl.lpszClassName = WndClassName;
 		wcl.lpfnWndProc = WndProc;
@@ -69,6 +70,7 @@ public:
 	{
 		// Mark copy/move constructor and assignment operators
 		// private and undefined.  They don't work correct.
+		// Teach youth good practices!
 		ReleaseDC( hWnd, DeviceContext );
 		DestroyWindow( hWnd );
 	}
