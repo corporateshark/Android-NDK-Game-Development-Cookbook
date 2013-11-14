@@ -32,6 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Ahtung!  Not portable code detected in Android!!!
 #pragma once
 
 #include "Platform.h"
@@ -44,7 +45,7 @@ struct sUniform
 public:
 	explicit sUniform( const std::string& Name ): FName( Name ), FLocation( -1 ) {};
 	sUniform( int Location, const std::string& Name ): FName( Name ), FLocation( Location ) {};
-	std::string      FName;
+	std::string      FName;  // Fancy aligment.  See first time.
 	Lint         FLocation;
 };
 
@@ -57,8 +58,9 @@ public:
 	bool       RelinkShaderProgram();
 	void       Bind();
 	Lint       CreateUniform( const std::string& Name );
-
+                   // Why |const float|?
 	void       SetUniformNameFloat( const std::string& Name, const float Float );
+	           // Don't use |const float&|.
 	void       SetUniformNameFloatArray( const std::string& Name, int Count, const float& Float );
 	void       SetUniformNameVec3Array( const std::string& Name, int Count, const LVector3& Vector );
 	void       SetUniformNameVec4Array( const std::string& Name, int Count, const LVector4& Vector );
