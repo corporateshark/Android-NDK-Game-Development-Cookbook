@@ -82,7 +82,7 @@ jmethodID FindJavaStaticMethod( JNIEnv* env, jclass* Class, jmethodID* Method, c
 {
 	*Class  = ( *env )->FindClass( env, ClassName );
 	*Method = ( *env )->GetStaticMethodID( env, *Class, MethodName, MethodSignature );
-
+	// Class must be global-referenced if you use method's id across calls.
 	return *Method;
 }
 
