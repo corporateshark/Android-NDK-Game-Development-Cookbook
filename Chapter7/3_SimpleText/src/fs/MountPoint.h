@@ -55,13 +55,6 @@ inline std::string Arch_FixFileName( const std::string& VName )
 	return s;
 }
 
-inline void Str_AddTrailingChar( std::string* Str, char Ch )
-{
-	if ( ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch ) ) { return; }
-
-	Str->push_back( Ch );
-}
-
 /// Mount point interface for virtual file system
 class iMountPoint: public iObject
 {

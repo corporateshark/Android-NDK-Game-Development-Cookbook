@@ -139,7 +139,7 @@ void GenerateTicks()
 
 void Str_AddTrailingChar( std::string* Str, char Ch )
 {
-	if ( ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch ) ) { return; }
+	bool HasLastChar = ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch );
 
-	Str->push_back( Ch );
+	if ( !HasLastChar ) Str->push_back( Ch );
 }

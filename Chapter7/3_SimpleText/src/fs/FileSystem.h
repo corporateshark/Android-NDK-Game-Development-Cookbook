@@ -36,6 +36,7 @@
 #define _FileSystem_
 
 #include "Files.h"
+#include "StrUtils.h"
 
 #include <vector>
 
