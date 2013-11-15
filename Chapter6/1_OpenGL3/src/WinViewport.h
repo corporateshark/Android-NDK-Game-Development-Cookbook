@@ -39,24 +39,33 @@
 class WinViewport
 {
 public:
-	WinViewport( int W, int H, const char* Title, const char* WndClassName, WNDPROC WndProc, bool Show ) : Width( W ), Height( H )
+	WinViewport( int W, int H, const char* Title, const char* WndClassName, WNDPROC WndProc, bool Show )
+	: Width( W )
+	, Height( H )
 	{
 		WNDCLASS wcl;
-		// It's a C style thing. BTW, safer and more recommended if |sizeof wcl|,
-		// instead of sizeof(Type).
-		memset( &wcl, 0, sizeof( WNDCLASS ) );
+
+		memset( &wcl, 0, sizeof( wcl ) );
 		wcl.lpszClassName = WndClassName;
 		wcl.lpfnWndProc = WndProc;
 		wcl.hCursor = LoadCursor( NULL, IDC_ARROW );
 
 		RegisterClass( &wcl );
 
-		// Width and Height are of whole window with border, not a client area.
-		// If GetWidth() and GetHeight() used later for viewport dimensions,
-		// it is wrong.  More, window can be resized but doesn't react on the 
-		// change.  Add proper border style (not reiszeable).  Don't hardcode
-		// positions, there are constants to system place it.
-		hWnd = CreateWindowA( WndClassName, Title, WS_OVERLAPPEDWINDOW, 100, 100, W, H, 0, NULL, NULL, NULL );
+		RECT Rect;
+
+		Rect.left = 0;
+		Rect.top = 0;
+		Rect.right  = W;
+		Rect.bottom = H;
+
+		AdjustWindowRect( &Rect, WS_OVERLAPPEDWINDOW, false );
+
+		const int WinWidth  = Rect.right  - Rect.left;
+		const int WinHeight = Rect.bottom - Rect.top;
+
+		hWnd = CreateWindowA( WndClassName, Title, WS_OVERLAPPEDWINDOW, 100, 100, WinWidth, WinHeight, 0, NULL, NULL, NULL );
+
 		DeviceContext = GetDC( hWnd );
 
 		if ( Show )
@@ -68,9 +77,6 @@ public:
 
 	virtual ~WinViewport()
 	{
-		// Mark copy/move constructor and assignment operators
-		// private and undefined.  They don't work correct.
-		// Teach youth good practices!
 		ReleaseDC( hWnd, DeviceContext );
 		DestroyWindow( hWnd );
 	}
