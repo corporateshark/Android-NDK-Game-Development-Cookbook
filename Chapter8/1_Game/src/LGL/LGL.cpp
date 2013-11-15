@@ -22,7 +22,7 @@ bool LGL::clGLExtRetriever::ChooseAndSetPixelFormat( sLGLAPI* LGL3, DEVICE_CONTE
 	PFD.cStencilBits = static_cast<BYTE>( StencilBits  & 0xFF );
 	PFD.iLayerType   = PFD_MAIN_PLANE;
 
-	Lint PixelFormat = 0;
+	int PixelFormat = 0;
 
 	if ( LGL3->wglChoosePixelFormatARB )
 	{
@@ -41,7 +41,7 @@ bool LGL::clGLExtRetriever::ChooseAndSetPixelFormat( sLGLAPI* LGL3, DEVICE_CONTE
 			0 // end
 		};
 
-		Luint Count = 0;
+		unsigned int Count = 0;
 
 		LGL3->wglChoosePixelFormatARB( DeviceContext, Attribs, NULL, 1, &PixelFormat, &Count );
 
@@ -202,6 +202,7 @@ void LGL::clGLExtRetriever::GetAPI( sLGLAPI* API ) const
 	API->glBindFragDataLocation = ( PFNGLBINDFRAGDATALOCATIONPROC )GetGLProc( API, "glBindFragDataLocation" );
 	API->glBindFramebuffer = ( PFNGLBINDFRAMEBUFFERPROC )GetGLProc( API, "glBindFramebuffer" );
 	API->glBindTexture = ( PFNGLBINDTEXTUREPROC )GetGLProc( API, "glBindTexture" );
+	API->glBindVertexArray = ( PFNGLBINDVERTEXARRAYPROC )GetGLProc( API, "glBindVertexArray" );
 	API->glBlendFunc = ( PFNGLBLENDFUNCPROC )GetGLProc( API, "glBlendFunc" );
 	API->glBufferData = ( PFNGLBUFFERDATAPROC )GetGLProc( API, "glBufferData" );
 	API->glBufferSubData = ( PFNGLBUFFERSUBDATAPROC )GetGLProc( API, "glBufferSubData" );
@@ -218,8 +219,10 @@ void LGL::clGLExtRetriever::GetAPI( sLGLAPI* API ) const
 	API->glDeleteBuffers = ( PFNGLDELETEBUFFERSPROC )GetGLProc( API, "glDeleteBuffers" );
 	API->glDeleteFramebuffers = ( PFNGLDELETEFRAMEBUFFERSPROC )GetGLProc( API, "glDeleteFramebuffers" );
 	API->glDeleteProgram = ( PFNGLDELETEPROGRAMPROC )GetGLProc( API, "glDeleteProgram" );
+	API->glDeleteQueries = ( PFNGLDELETEQUERIESPROC )GetGLProc( API, "glDeleteQueries" );
 	API->glDeleteShader = ( PFNGLDELETESHADERPROC )GetGLProc( API, "glDeleteShader" );
 	API->glDeleteTextures = ( PFNGLDELETETEXTURESPROC )GetGLProc( API, "glDeleteTextures" );
+	API->glDeleteVertexArrays = ( PFNGLDELETEVERTEXARRAYSPROC )GetGLProc( API, "glDeleteVertexArrays" );
 	API->glDepthMask = ( PFNGLDEPTHMASKPROC )GetGLProc( API, "glDepthMask" );
 	API->glDisable = ( PFNGLDISABLEPROC )GetGLProc( API, "glDisable" );
 	API->glDisablei = ( PFNGLDISABLEIPROC )GetGLProc( API, "glDisablei" );
@@ -235,7 +238,9 @@ void LGL::clGLExtRetriever::GetAPI( sLGLAPI* API ) const
 	API->glGenBuffers = ( PFNGLGENBUFFERSPROC )GetGLProc( API, "glGenBuffers" );
 	API->glGenerateMipmap = ( PFNGLGENERATEMIPMAPPROC )GetGLProc( API, "glGenerateMipmap" );
 	API->glGenFramebuffers = ( PFNGLGENFRAMEBUFFERSPROC )GetGLProc( API, "glGenFramebuffers" );
+	API->glGenQueries = ( PFNGLGENQUERIESPROC )GetGLProc( API, "glGenQueries" );
 	API->glGenTextures = ( PFNGLGENTEXTURESPROC )GetGLProc( API, "glGenTextures" );
+	API->glGenVertexArrays = ( PFNGLGENVERTEXARRAYSPROC )GetGLProc( API, "glGenVertexArrays" );
 	API->glGetActiveAttrib = ( PFNGLGETACTIVEATTRIBPROC )GetGLProc( API, "glGetActiveAttrib" );
 	API->glGetActiveUniform = ( PFNGLGETACTIVEUNIFORMPROC )GetGLProc( API, "glGetActiveUniform" );
 	API->glGetAttribLocation = ( PFNGLGETATTRIBLOCATIONPROC )GetGLProc( API, "glGetAttribLocation" );
@@ -247,6 +252,7 @@ void LGL::clGLExtRetriever::GetAPI( sLGLAPI* API ) const
 	API->glGetShaderiv = ( PFNGLGETSHADERIVPROC )GetGLProc( API, "glGetShaderiv" );
 	API->glGetString = ( PFNGLGETSTRINGPROC )GetGLProc( API, "glGetString" );
 	API->glGetStringi = ( PFNGLGETSTRINGIPROC )GetGLProc( API, "glGetStringi" );
+	API->glGetTexImage = ( PFNGLGETTEXIMAGEPROC )GetGLProc( API, "glGetTexImage" );
 	API->glGetTexLevelParameteriv = ( PFNGLGETTEXLEVELPARAMETERIVPROC )GetGLProc( API, "glGetTexLevelParameteriv" );
 	API->glGetUniformLocation = ( PFNGLGETUNIFORMLOCATIONPROC )GetGLProc( API, "glGetUniformLocation" );
 	API->glIsProgram = ( PFNGLISPROGRAMPROC )GetGLProc( API, "glIsProgram" );

@@ -77,12 +77,3 @@ void JavaLeave( JNIEnv* env )
 {
 	( *env )->PopLocalFrame( env, NULL );
 }
-
-jmethodID FindJavaStaticMethod( JNIEnv* env, jclass* Class, jmethodID* Method, const char* ClassName, const char* MethodName, const char* MethodSignature )
-{
-	*Class  = ( *env )->FindClass( env, ClassName );
-	*Method = ( *env )->GetStaticMethodID( env, *Class, MethodName, MethodSignature );
-	// Class must be global-referenced if you use method's id across calls.
-	return *Method;
-}
-

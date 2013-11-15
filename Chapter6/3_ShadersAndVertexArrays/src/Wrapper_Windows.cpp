@@ -138,8 +138,7 @@ int main()
 
 	LGL3 = new sLGLAPI;
 
-	LGL::clGLExtRetriever* OpenGL;
-	OpenGL = new LGL::clGLExtRetriever;
+	LGL::clGLExtRetriever* OpenGL = new LGL::clGLExtRetriever;
 	OpenGL->Reload( LGL3 );
 
 	const int GLVerMajor = 3;
@@ -199,6 +198,7 @@ int main()
 	}
 
 	delete( MainWindow );
+	delete( LGL3 );
 
 	return msg.wParam;
 }
