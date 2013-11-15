@@ -70,7 +70,6 @@ This software uses libvorbis library (http://www.xiph.org)
 This software uses The Open Dynamics Engine (ODE) (http://www.ode.org)
 (C) 2001-2007, Russell L. Smith.
 
-
 ------
 
 This software uses OpenAL Soft for Android (http://repo.or.cz/w/openal-soft/android.git)
@@ -78,5 +77,5 @@ This software uses OpenAL Soft for Android (http://repo.or.cz/w/openal-soft/andr
 
 ------
 
-This project uses OpenSSL library (http://www.openssl.org)
+This software uses OpenSSL library (http://www.openssl.org)
 (C) 1998-2008, The OpenSSL Project
