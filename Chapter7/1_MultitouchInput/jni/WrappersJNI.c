@@ -63,21 +63,3 @@ JNIEnv* GetEnvThread()
 
 	return env;
 }
-
-void JavaEnter( JNIEnv** env )
-{
-	*env = GetEnv();
-	( **env )->PushLocalFrame( *env, 4 );
-}
-
-void JavaLeave( JNIEnv* env )
-{
-	( *env )->PopLocalFrame( env, NULL );
-}
-
-jmethodID FindJavaStaticMethod( JNIEnv* env, jclass* Class, jmethodID* Method, const char* ClassName, const char* MethodName, const char* MethodSignature )
-{
-	*Class  = ( *env )->FindClass( env, ClassName );
-	*Method = ( *env )->GetStaticMethodID( env, *Class, MethodName, MethodSignature );
-	return *Method;
-}

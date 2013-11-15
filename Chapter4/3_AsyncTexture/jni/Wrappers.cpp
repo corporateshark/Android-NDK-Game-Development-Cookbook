@@ -237,8 +237,4 @@ extern "C"
 		GLDebug_RenderTriangle();
 	}
 
-	jmethodID FindJavaStaticMethod( JNIEnv* env, jclass* Class, jmethodID* Method, const char* ClassName, const char* MethodName, const char* MethodSignature );
-	void JavaEnter( JNIEnv** env );
-	void JavaLeave( JNIEnv* env );
-
 } // extern "C"

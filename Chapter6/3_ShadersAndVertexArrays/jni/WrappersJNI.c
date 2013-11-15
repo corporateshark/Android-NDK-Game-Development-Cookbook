@@ -65,15 +65,3 @@ JNIEnv* GetEnvThread()
 
 	return env;
 }
-
-void JavaEnter( JNIEnv** env )
-{
-	*env = GetEnv();
-
-	( **env )->PushLocalFrame( *env, 4 );
-}
-
-void JavaLeave( JNIEnv* env )
-{
-	( *env )->PopLocalFrame( env, NULL );
-}
