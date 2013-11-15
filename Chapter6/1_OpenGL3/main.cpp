@@ -31,7 +31,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-// These should go after LGL.h
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -66,14 +65,12 @@ int main()
 	// This isn't deleted, memory leak.
 	LGL3 = new sLGLAPI;
 
-	LGL::clGLExtRetriever* OpenGL;  // Why not in one line with the next? Leaked too.
-	OpenGL = new LGL::clGLExtRetriever;
+	LGL::clGLExtRetriever* OpenGL = new LGL::clGLExtRetriever;
 	OpenGL->Reload( LGL3 );
 
 	const int GLVerMajor = 3;
 	const int GLVerMinor = 2;
 
-	// Do we really need `TempWindow` and `TempContext` here? Seems like it's unused.
 	WinViewport* TempWindow = new WinViewport( 0, 0, "TempWindow", "TempWindowClass", &DefWindowProc, false );
 
 	// create dummy context to get pointers to GL extensions functions
@@ -82,9 +79,9 @@ int main()
 	// create the main context
 	GL_CONTEXT_TYPE Context  = OpenGL->CreateContextFull( LGL3, MainWindow->GetDeviceContext(), 32, 24, 0, 0, GLVerMajor, GLVerMinor );
 
-	// cleanup temp stuff
+	// clean up temp stuff
 	OpenGL->DeleteContext( LGL3, TempWindow->GetDeviceContext(), TempContext );
-	delete TempWindow;
+	delete( TempWindow );
 	OpenGL->MakeCurrent( LGL3, MainWindow->GetDeviceContext(), Context );
 	OpenGL->Reload( LGL3 );
 
@@ -104,7 +101,9 @@ int main()
 		SwapBuffers( MainWindow->GetDeviceContext() );
 	}
 
-	delete MainWindow;
+	delete( MainWindow );
+	delete( OpenGL );
+	delete( LGL3 );
 
 	return msg.wParam;
 }
