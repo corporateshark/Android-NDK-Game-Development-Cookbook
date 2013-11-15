@@ -20,7 +20,7 @@ bool LGL::clGLExtRetriever::ChooseAndSetPixelFormat( sLGLAPI* LGL3, HDC DeviceCo
 	PFD.cStencilBits = static_cast<BYTE>( StencilBits  & 0xFF );
 	PFD.iLayerType   = PFD_MAIN_PLANE;
 
-	Lint PixelFormat = 0;
+	int PixelFormat = 0;
 
 	if ( LGL3->wglChoosePixelFormatARB )
 	{
@@ -39,9 +39,7 @@ bool LGL::clGLExtRetriever::ChooseAndSetPixelFormat( sLGLAPI* LGL3, HDC DeviceCo
 			0 // end
 		};
 
-		// Why your type?  It returns windows type.  It's just coincedence
-		// that they match.
-		Luint Count = 0;  
+		unsigned int Count = 0;  
 
 		LGL3->wglChoosePixelFormatARB( DeviceContext, Attribs, NULL, 1, &PixelFormat, &Count );
 
@@ -109,8 +107,10 @@ HGLRC LGL::clGLExtRetriever::CreateContextFull( sLGLAPI* LGL3, HDC DeviceContext
 		return 0;
 	}
 
-	// Why one-liner while upper you have full blocks?
-	if ( !MakeCurrent( LGL3, DeviceContext, RenderContext ) ) { return 0; }
+	if ( !MakeCurrent( LGL3, DeviceContext, RenderContext ) )
+	{
+		return 0;
+	}
 
 	Reload( LGL3 );
 
@@ -140,16 +140,10 @@ void* LGL::clGLExtRetriever::GetGLProc( sLGLAPI* LGL3, const char* Name ) const
 
 	if ( LGL3->lglGetProcAddress )
 	{
-		// You use static_cast, than why not reinterprest_cast here?
-		Proc = ( void* )LGL3->lglGetProcAddress( Name );
+		Proc = reinterpret_cast<void*>( LGL3->lglGetProcAddress( Name ) );
 	}
-	// Ugly ugly...  Just if.  Sorry write in K&R style since you
-	// have formatter, and K&R easier to type in online editor.
-	if (!Proc && FLibHandle) {
-		HMODULE Module = reinterpret_cast<HMODULE>(FLibHandle);
-		Proc = reinterpret_cast<void*>(::GetProcAddress(Module, Name));
-	}
-	return Proc;
+
+	return Proc ? Proc : ( FLibHandle ? ( void* )::GetProcAddress( ( HMODULE )FLibHandle, Name ) : NULL );
 }
 
 void LGL::clGLExtRetriever::Reload( sLGLAPI* LGL3 )

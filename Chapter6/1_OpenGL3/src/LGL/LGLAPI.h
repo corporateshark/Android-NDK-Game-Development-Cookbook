@@ -3,10 +3,17 @@
 // Part of Linderdaum Engine
 // http://www.linderdaum.com
 
-#ifndef _LGL_API_
-#define _LGL_API_
+#pragma once
 
 #include "LGL.h"
+
+#include <windows.h>
+
+typedef HGLRC ( WINAPI* PFNwglCreateContext )( HDC );
+typedef PROC  ( WINAPI* PFNwglGetProcAddress )( LPCSTR );
+typedef BOOL  ( WINAPI* PFNwglMakeCurrent )( HDC, HGLRC );
+typedef BOOL  ( WINAPI* PFNwglDeleteContext )( HGLRC );
+typedef HGLRC ( WINAPI* PFNwglGetCurrentContext )( void );
 
 struct sLGLAPI
 {
@@ -127,5 +134,3 @@ struct sLGLAPI
 	PFNWGLGETEXTENSIONSSTRINGARBPROC        wglGetExtensionsStringARB;
 	PFNWGLSWAPINTERVALEXTPROC               wglSwapIntervalEXT;
 };
-
-#endif // _LGL_API_

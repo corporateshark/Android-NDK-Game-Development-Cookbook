@@ -2,8 +2,7 @@
 // Part of Linderdaum Engine
 // http://www.linderdaum.com
 
-#ifndef _LGL_  // Name is not standard.  Readers will notice that.
-#define _LGL_
+#pragma once
 
 #include "Platform.h"
 #include <stdio.h>
@@ -12,21 +11,10 @@
 #include "GL/gl3.h"
 #include "GL/wglext.h"
 
-// Why not typedef?
-#define DEVICE_CONTEXT_TYPE HDC
-#define GL_CONTEXT_TYPE     HGLRC
-
-// Use types defined before here too...
-typedef HGLRC ( WINAPI* PFNwglCreateContext )( HDC );
-typedef PROC  ( WINAPI* PFNwglGetProcAddress )( LPCSTR );
-typedef BOOL  ( WINAPI* PFNwglMakeCurrent )( HDC, HGLRC );
-typedef BOOL  ( WINAPI* PFNwglDeleteContext )( HGLRC );
-typedef HGLRC ( WINAPI* PFNwglGetCurrentContext )( void );
-
-// Never do includes after typedef or something. Always first.
-// This may lead to impression include depends on them, but it
-// shouldn't be.
 #include "LGLAPI.h"
+
+typedef HDC DEVICE_CONTEXT_TYPE;
+typedef HGLRC GL_CONTEXT_TYPE;
 
 namespace LGL
 {
@@ -51,5 +39,3 @@ namespace LGL
 		void* FLibHandle;
 	};
 };
-
-#endif
