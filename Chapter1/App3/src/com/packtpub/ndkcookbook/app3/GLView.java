@@ -46,7 +46,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class GLView extends GLSurfaceView
 {
-	public static final String TAG = "GLView";
+	private static final String TAG = "GLView";
 
 	public GLView( Context context )
 	{
