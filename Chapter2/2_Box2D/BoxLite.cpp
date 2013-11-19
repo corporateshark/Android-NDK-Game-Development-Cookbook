@@ -267,7 +267,7 @@ namespace Box2D
 	static void ComputeIncidentEdge( ClipVertex c[2], const Vec2& h, const Vec2& pos, const Mat22& Rot, const Vec2& normal )
 	{
 		// The normal is from the reference box. Convert it
-		// to the incident boxe's frame and flip sign.
+		// to the incident box's frame and flip sign.
 		Mat22 RotT = Rot.Transpose();
 		Vec2 n = -( RotT * normal );
 		Vec2 nAbs = Abs( n );
@@ -323,7 +323,7 @@ namespace Box2D
 		c[1].v = pos + Rot * c[1].v;
 	}
 
-// The normal points from A to B
+	// The normal points from A to B
 	int Collide( Contact* contacts, Body* bodyA, Body* bodyB )
 	{
 		// Setup
@@ -470,7 +470,8 @@ namespace Box2D
 
 			contacts[numContacts].separation = separation;
 			contacts[numContacts].normal = normal;
-			// slide contact point onto reference face (easy to cull)
+
+			// Slide contact point onto reference face (easy to cull)
 			contacts[numContacts].position = clipPoints2[i].v - separation * frontNormal;
 			contacts[numContacts].feature = clipPoints2[i].fp;
 
@@ -659,7 +660,7 @@ namespace Box2D
 
 		if ( TimingFunction ) { PreStepTime = TimingFunction() - PreStepTime; }
 
-		if ( TimingFunction ) {CollisionResolveTime = TimingFunction(); }
+		if ( TimingFunction ) { CollisionResolveTime = TimingFunction(); }
 
 		for ( int i = 0; i < iterations; ++i ) // iterations
 		{

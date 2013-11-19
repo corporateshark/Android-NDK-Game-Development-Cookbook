@@ -62,7 +62,7 @@ Joint* CreateJoint( Body* B1, Body* B2, const Vec2& Anchor, float Softness, floa
 
 Body* AddGround( World* W, const Vec2& Pos, float Angle, const Vec2& Size, float Friction )
 {
-	Body* Ground = CreateBody( Size /*vec2(100.0f, 20.0f)*/, FLT_MAX, Friction /*0.2f*/ );
+	Body* Ground = CreateBody( Size, FLT_MAX, Friction );
 
 	Ground->position = Pos;
 	Ground->rotation = Angle;
