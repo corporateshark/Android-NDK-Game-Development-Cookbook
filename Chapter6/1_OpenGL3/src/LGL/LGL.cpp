@@ -39,7 +39,7 @@ bool LGL::clGLExtRetriever::ChooseAndSetPixelFormat( sLGLAPI* LGL3, HDC DeviceCo
 			0 // end
 		};
 
-		unsigned int Count = 0;  
+		unsigned int Count = 0;
 
 		LGL3->wglChoosePixelFormatARB( DeviceContext, Attribs, NULL, 1, &PixelFormat, &Count );
 

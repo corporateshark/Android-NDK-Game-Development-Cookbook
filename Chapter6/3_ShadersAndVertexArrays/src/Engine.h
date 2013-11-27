@@ -55,7 +55,7 @@ inline void Str_AddTrailingChar( std::string* Str, char Ch )
 {
 	bool HasLastChar = ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch );
 
-	if ( !HasLastChar ) Str->push_back( Ch );
+	if ( !HasLastChar ) { Str->push_back( Ch ); }
 }
 
 inline std::string Str_ReplaceAllSubStr( const std::string& Str, const std::string& OldSubStr, const std::string& NewSubStr )

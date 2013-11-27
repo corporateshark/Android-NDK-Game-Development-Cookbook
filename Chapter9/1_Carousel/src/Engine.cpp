@@ -141,5 +141,5 @@ void Str_AddTrailingChar( std::string* Str, char Ch )
 {
 	bool HasLastChar = ( !Str->empty() ) && ( Str->data()[Str->length() - 1] == Ch );
 
-	if ( !HasLastChar ) Str->push_back( Ch );
+	if ( !HasLastChar ) { Str->push_back( Ch ); }
 }

@@ -40,8 +40,8 @@ class WinViewport
 {
 public:
 	WinViewport( int W, int H, const char* Title, const char* WndClassName, WNDPROC WndProc, bool Show )
-	: Width( W )
-	, Height( H )
+		: Width( W )
+		, Height( H )
 	{
 		WNDCLASS wcl;
 
