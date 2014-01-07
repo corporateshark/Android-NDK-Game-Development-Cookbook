@@ -86,7 +86,7 @@ LOCAL_SRC_FILES += ../src/carousel/FlowFlinger.cpp
 LOCAL_SRC_FILES += ../src/game/Game.cpp ../src/game/GalleryTable.cpp ../src/game/Globals.cpp ../src/game/ImageTypes.cpp ../src/game/Page_MainMenu.cpp
 
 LOCAL_ARM_MODE := arm
-COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL -isystem $(SYSROOT)/usr/include/
+COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(COMMON_CFLAGS)

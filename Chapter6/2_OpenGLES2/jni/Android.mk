@@ -17,7 +17,7 @@ LOCAL_C_INCLUDES += \
 LOCAL_SRC_FILES += Wrappers.cpp WrappersJNI.c ../main.cpp ../src/LGL/LGL.cpp
 
 LOCAL_ARM_MODE := arm
-COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL -isystem $(SYSROOT)/usr/include/
+COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(COMMON_CFLAGS)

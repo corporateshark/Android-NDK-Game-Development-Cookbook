@@ -14,7 +14,7 @@ LOCAL_C_INCLUDES += \ ../..
 LOCAL_SRC_FILES += Wrappers.cpp ../main.cpp ../Thread.cpp ../tinythread.cpp ../WorkerThread.cpp ../iIntrusivePtr.cpp ../Event.cpp ../FileSystem.cpp ../libcompress.c ../Archive.cpp ../Rendering.cpp
 
 LOCAL_ARM_MODE := arm
-COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL -isystem $(SYSROOT)/usr/include/
+COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(COMMON_CFLAGS)

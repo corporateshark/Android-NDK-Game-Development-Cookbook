@@ -36,7 +36,7 @@ LOCAL_SRC_FILES = ../Source/FreeImage/BitmapAccess.cpp ../Source/FreeImage/Color
 
 LOCAL_MODULE := FreeImage
 
-GLOBAL_CFLAGS   := -O3 -DHAVE_CONFIG_H=1 -DFREEIMAGE_LIB -isystem $(SYSROOT)/usr/include/ 
+GLOBAL_CFLAGS   := -O3 -DHAVE_CONFIG_H=1 -DFREEIMAGE_LIB
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(GLOBAL_CFLAGS)

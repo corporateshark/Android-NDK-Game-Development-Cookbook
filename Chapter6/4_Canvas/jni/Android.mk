@@ -20,7 +20,7 @@ LOCAL_SRC_FILES += Wrappers.cpp WrappersJNI.c ../main.cpp ../src/LGL/LGL.cpp ../
 LOCAL_SRC_FILES += ../src/fs/FileSystem.cpp ../src/fs/libcompress.c ../src/fs/Archive.cpp ../src/Bitmap.cpp
 
 LOCAL_ARM_MODE := arm
-COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL -isystem $(SYSROOT)/usr/include/
+COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(COMMON_CFLAGS)

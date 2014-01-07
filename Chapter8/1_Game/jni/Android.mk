@@ -65,7 +65,7 @@ LOCAL_SRC_FILES += ../src/threading/Event.cpp ../src/threading/Thread.cpp ../src
 LOCAL_SRC_FILES += ../src/game/Globals.cpp ../src/game/Pentomino.cpp
 
 LOCAL_ARM_MODE := arm
-COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL -isystem $(SYSROOT)/usr/include/
+COMMON_CFLAGS := -Werror -DANDROID -DDISABLE_IMPORTGL
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(COMMON_CFLAGS)

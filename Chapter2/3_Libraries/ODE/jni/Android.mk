@@ -120,7 +120,7 @@ LOCAL_SRC_FILES += \
 
 LOCAL_MODULE := ODE
 
-GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1 -DODE_LIB -isystem $(SYSROOT)/usr/include/ 
+GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1 -DODE_LIB
 GLOBAL_CFLAGS   += -Wno-switch -Wno-deprecated-writable-strings -Wno-null-dereference
 
 ifeq ($(TARGET_ARCH),x86)

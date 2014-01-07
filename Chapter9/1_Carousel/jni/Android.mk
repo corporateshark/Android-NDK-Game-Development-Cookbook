@@ -33,7 +33,7 @@ LOCAL_SRC_FILES += Wrappers.cpp WrappersJNI.c \
 	../src/carousel/FlowFlinger.cpp
 
 LOCAL_ARM_MODE := arm
-PROJ_CFLAGS := -Wno-unused-value -Wno-format-extra-args -Wno-format-security -O3 -Werror -DANDROID -DDISABLE_IMPORTGL -D_DISABLE_TUNNELLERS_ -D_DISABLE_METHODS_ -DDISABLE_GUARD_UNGUARD_MECHANISM -isystem $(SYSROOT)/usr/include/
+PROJ_CFLAGS := -Wno-unused-value -Wno-format-extra-args -Wno-format-security -O3 -Werror -DANDROID -DDISABLE_IMPORTGL -D_DISABLE_TUNNELLERS_ -D_DISABLE_METHODS_ -DDISABLE_GUARD_UNGUARD_MECHANISM
 
 ifeq ($(TARGET_ARCH),x86)
 	GLOBAL_CFLAGS  := $(PROJ_CFLAGS)

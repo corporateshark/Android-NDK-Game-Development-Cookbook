@@ -12,7 +12,7 @@ LOCAL_SRC_FILES = ../src/bitwise.c ../src/framing.c
 
 LOCAL_MODULE := OGG
 
-GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1 -isystem $(SYSROOT)/usr/include/ 
+GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(GLOBAL_CFLAGS)

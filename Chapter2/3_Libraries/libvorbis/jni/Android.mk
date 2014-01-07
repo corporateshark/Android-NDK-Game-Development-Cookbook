@@ -17,7 +17,7 @@ LOCAL_SRC_FILES = ../lib/mdct.c ../lib/smallft.c ../lib/block.c ../lib/envelope.
 
 LOCAL_MODULE := Vorbis
 
-GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1 -isystem $(SYSROOT)/usr/include/ 
+GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(GLOBAL_CFLAGS)

@@ -11,7 +11,7 @@ LOCAL_SRC_FILES = ../loaders.cpp ../sndfile.cpp ../mixer.cpp ../modplug.cpp
 
 LOCAL_MODULE := ModPlug
 
-GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1 -isystem $(SYSROOT)/usr/include/ 
+GLOBAL_CFLAGS   := -O3 -Werror -DHAVE_CONFIG_H=1
 
 ifeq ($(TARGET_ARCH),x86)
 	LOCAL_CFLAGS   := $(GLOBAL_CFLAGS)
