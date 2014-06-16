@@ -101,7 +101,7 @@ double Env_GetMouseTime()
 
 double Env_GetSeconds()
 {
-	return ( double )clock() / 1000.0;
+	return ( double )clock() / CLOCKS_PER_SEC;
 }
 
 void DrawTile( clPuzzle* g, int i, int j, const vec4& Color )

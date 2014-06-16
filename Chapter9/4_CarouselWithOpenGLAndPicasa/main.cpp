@@ -113,7 +113,7 @@ double Env_GetMouseTime()
 
 double Env_GetSeconds()
 {
-	return ( double )clock() / 1000.0;
+	return ( double )clock() / CLOCKS_PER_SEC;
 }
 
 class clResponder: public iGestureResponder

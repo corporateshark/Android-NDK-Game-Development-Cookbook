@@ -53,7 +53,7 @@ void Env_Sleep( int Milliseconds )
 
 double Env_GetSeconds()
 {
-	return ( double )clock() / 1000.0;
+	return ( double )clock() / CLOCKS_PER_SEC;
 }
 
 clPtr<FileSystem> g_FS;
