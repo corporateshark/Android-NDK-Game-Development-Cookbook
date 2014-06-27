@@ -183,7 +183,7 @@ static void GLDebug_RenderTriangle()
 
 std::string ConvertJString( JNIEnv* env, jstring str )
 {
-	if ( !str ) { std::string(); }
+	if ( !str ) { return std::string(); }
 
 	const jsize len = env->GetStringUTFLength( str );
 	const char* strChars = env->GetStringUTFChars( str, ( jboolean* )0 );
