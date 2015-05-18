@@ -87,7 +87,7 @@ void LoadOGG()
 void UnloadOGG()
 {
 #if !defined( ANDROID)
-	CloseHandle( g_OGGLibrary );
+	FreeLibrary( g_OGGLibrary );
 #endif
 }
 
@@ -133,7 +133,7 @@ bool LoadModPlug()
 bool UnloadModPlug()
 {
 #if defined( _WIN32 )
-	CloseHandle( g_ModPlugLibrary );
+	FreeLibrary( g_ModPlugLibrary );
 #endif
 	return true;
 }

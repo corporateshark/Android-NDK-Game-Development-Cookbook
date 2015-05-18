@@ -190,7 +190,7 @@ bool Curl_Unload()
 
 	if ( g_CurlLibrary )
 	{
-		CloseHandle( g_CurlLibrary );
+		FreeLibrary( g_CurlLibrary );
 		g_CurlLibrary = NULL;
 	}
 

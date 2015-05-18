@@ -142,7 +142,7 @@ void FreeImage_Unload()
 
 	FI_NumInitialized--;
 
-	CloseHandle( Lib );
+	FreeLibrary( Lib );
 
 	FI_OpenMemory = NULL;
 	Lib = NULL;

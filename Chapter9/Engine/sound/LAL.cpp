@@ -107,7 +107,7 @@ LPALCCAPTURESAMPLES        alcCaptureSamples;
 void UnloadAL()
 {
 #if !defined( AL_STATIC_LINK )
-	CloseHandle( FLib );
+	FreeLibrary( FLib );
 #endif
 }
 

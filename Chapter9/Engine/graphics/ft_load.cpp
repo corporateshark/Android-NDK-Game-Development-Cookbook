@@ -107,7 +107,7 @@ void UnloadFT()
 	if ( FTLoadCount > 0 ) { return; }
 
 #if defined(_WIN32)
-	CloseHandle( hFTDll );
+	FreeLibrary( hFTDll );
 #endif
 	hFTDll = NULL;
 }
