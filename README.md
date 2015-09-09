@@ -1,3 +1,5 @@
+<img src="./book-cover.jpg" alt="Book cover" width="350px"/>
+
 Android NDK Game Development Cookbook
 https://github.com/corporateshark/Android-NDK-Game-Development-Cookbook
 =======================================================================
